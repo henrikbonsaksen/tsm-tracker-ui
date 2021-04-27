@@ -1,11 +1,16 @@
 
-const menuItems = [
-  { title: 'Home' },
-  { title: 'Some other page' },
-  { title: 'About us' },
-];
+import { Link } from "react-router-dom";
 
-const Menu = () => (
+interface MenuItem {
+  title: string,
+  route: string
+}
+
+interface MenuProps {
+  menuItems: MenuItem[]
+}
+
+const Menu = ({ menuItems }: MenuProps) => (
   <div style={{
     display: 'flex',
     width: "100%",
@@ -23,7 +28,7 @@ const Menu = () => (
       <ul>
         {menuItems.map((item) => (
           <li style={{ display: 'inline-block', textDecoration: 'none', marginLeft: '1rem' }}>
-            {item.title}
+            <Link to={item.route}>{item.title}</Link>
           </li>
         ))}
       </ul>
